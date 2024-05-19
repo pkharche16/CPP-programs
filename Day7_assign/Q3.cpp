@@ -32,6 +32,10 @@ class test:public cricket
     {
         cout<<"test"<<endl;
     }
+    void Daywisesummary()
+    {
+        cout<<"daywise summary"<<endl;
+    }
 };
 class twentyover:public cricket
 {
@@ -45,7 +49,21 @@ class twentyover:public cricket
 void doit(cricket &c)
 {
     c.play();
-    if(dynamic_cast<test*>(&c))
-    
-    
+    try
+ { 
+    test &e = dynamic_cast<test&>(c);
+   if(&e)
+   {
+    e.Daywisesummary();
+   }
+ }
+   catch(bad_cast &r)
+   {
+    cout<<"bad cast"<<r.what()<<endl;
+   }   
+}
+int main()
+{
+    test t;
+    doit(t);
 }
